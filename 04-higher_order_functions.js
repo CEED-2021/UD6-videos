@@ -28,8 +28,8 @@ function impureFunction() {
 
 setTimeout(impureFunction, 10)
 
-function tenTimes(action) {
-  for(let i=0; i<10; i++) {
+function repeat(action, n) {
+  for(let i=0; i<n; i++) {
     action()
   }
 }
@@ -37,8 +37,8 @@ function tenTimes(action) {
 function sayHello() { console.log('Hello') }
 function sayGoodbye() { console.log('Goodbye') }
 
-tenTimes(sayHello);
-tenTimes(sayGoodbye);
+repeat(sayHello, 3);
+repeat(sayGoodbye, 4);
 
 
 console.log('----------------------------------------------------');
