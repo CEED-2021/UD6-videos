@@ -2,14 +2,14 @@
 /*
 find: only find one
   arr.find(callback(element[, index[, array]])[, thisArg])
-  devuelve el valor del primer elemento
+  returns first element that matches condition (callback returns true)
 
   - Elementos pares sean pares y los impares impares
   - Ningún elemento mayor que la longitud del array
 
 filter: find more than one
   arr.filter(callback(currentValue[, index[, array]])[, thisArg])
-  NUEVO array con los elementos que pasan el filter
+  NEW array with elements passing filter
 
 every:
   arr.every(callback(element[, index[, array]])[, thisArg])
@@ -69,4 +69,11 @@ console.log(result)
 // pos: 0 1 2  3 4 5
 data = [1,2,3,-4,-5,6]
 result = data.filter( (element, index) =>  element < index )
+console.log(result)
+
+
+// More semantic
+const valueLessThanIndex = (element, index) =>  element < index
+
+result = data.filter(valueLessThanIndex)
 console.log(result)
