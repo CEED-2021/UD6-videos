@@ -1,24 +1,13 @@
 
+
+
+
 /*
-find: only find one
-  arr.find(callback(element[, index[, array]])[, thisArg])
-  returns first element that matches condition (callback returns true)
-
-  - Elementos pares sean pares y los impares impares
-  - Ningún elemento mayor que la longitud del array
-
 filter: find more than one
   arr.filter(callback(currentValue[, index[, array]])[, thisArg])
   NEW array with elements passing filter
-
-every:
-  arr.every(callback(element[, index[, array]])[, thisArg])
-  returns true or false
-
-some:
-  arr.some(callback(element[, index[, array]])[, thisArg])
-  returns true or false
 */
+
 
 let data = [1,2,3,4,5,6]
 let result
@@ -49,7 +38,7 @@ function lessThan(n) {
 }
 
 
-function conditions(...functions) {
+function take(...functions) {
   return (item) => {
     for(let f of functions) {
       if(!f(item)) return false
@@ -58,7 +47,7 @@ function conditions(...functions) {
   }
 }
 
-result = data.filter(conditions(greaterThan(3), lessThan(6)))
+result = data.filter(take(greaterThan(3), lessThan(6)))
 console.log(result)
 
 //----------------------------
@@ -77,3 +66,49 @@ const valueLessThanIndex = (element, index) =>  element < index
 
 result = data.filter(valueLessThanIndex)
 console.log(result)
+
+
+console.log('----------------------------------------------------');
+console.log('find()');
+console.log('----------------------------------------------------');
+/*
+find: only find one
+  arr.find(callback(element[, index[, array]])[, thisArg])
+  returns first element that matches condition (callback returns true)
+*/
+
+const startsWith = prefix => string => string.startsWith(prefix)
+
+data = ['tela', 'tola', 'tila', 'timo']
+result = data.find(startsWith('ti'))
+
+console.log(result)
+
+console.log('----------------------------------------------------');
+console.log('some()');
+console.log('----------------------------------------------------');
+/*
+some:
+  arr.some(callback(element[, index[, array]])[, thisArg])
+  returns true or false
+*/
+
+data = ['tela', 'tola', 'tila', 'timo']
+console.log(data.some(startsWith('to')))
+console.log(data.some(startsWith('fo')))
+
+
+console.log('----------------------------------------------------');
+console.log('every()');
+console.log('----------------------------------------------------');
+/*
+every:
+  arr.every(callback(element[, index[, array]])[, thisArg])
+  returns true or false
+*/
+
+data = ['tela', 'tola', 'tila', 'timo']
+console.log(data.every(startsWith('to')))
+console.log(data.every(startsWith('t')))
+
+
