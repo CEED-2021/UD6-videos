@@ -1,3 +1,0 @@
-// Get a property and check something on it....
-
-// Do more than one thing with array elements => avoids double looping

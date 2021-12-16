@@ -1,6 +1,9 @@
+let data;
+let result;
 
-
-
+console.log('----------------------------------------------------');
+console.log('filter()');
+console.log('----------------------------------------------------');
 
 /*
 filter: find more than one
@@ -8,13 +11,7 @@ filter: find more than one
   NEW array with elements passing filter
 */
 
-
-let data = [1,2,3,4,5,6]
-let result
-
-console.log('----------------------------------------------------');
-console.log('filter()');
-console.log('----------------------------------------------------');
+data = [1,2,3,4,5,6]
 
 // Naïve version
 //----------------------------
