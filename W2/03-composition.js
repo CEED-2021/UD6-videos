@@ -1,10 +1,31 @@
-// Get a property and check something on it....
-// Do more than one thing with array elements => avoids double looping
-
-
 console.log('----------------------------------------------------');
 console.log('Composition & pipelining');
 console.log('----------------------------------------------------');
+
+
+
+function doble(x) { return x * 2 }
+function masTres(x) { return x + 3 }
+
+// Compose for two functions
+let compose = function(g, f) {
+  return x => g(f(x))
+}
+
+const c1 = compose(doble, masTres);
+console.log(c1(5)) // 16 = (5+3) * 2
+
+// Pipe for two functions
+let pipe = function(f, g) {
+  return x => g(f(x)) // 13 = (5*2) + 3
+}
+
+const p1 = pipe(doble, masTres)
+console.log(p1(5))
+
+
+
+// We can compose or pipe multiple functions to perform complex tasks
 
 let res;
 let users = [
@@ -13,7 +34,7 @@ let users = [
   { id:"12", name: "Maryam", surname: "Mirzakhani", email: "maryam@stanford.edu" },
 ];
 
-function pipe(...functions) {
+pipe = function(...functions) {
   return function(param) {
     let result = functions[0](param);
     for(let i=1; i<functions.length; i++) {
@@ -23,7 +44,7 @@ function pipe(...functions) {
   }
 }
 
-function compose(...functions) {
+compose = function(...functions) {
   return function(param) {
     let result = functions[functions.length-1](param);
     for(let i=functions.length-2; i>=0; i--) {
